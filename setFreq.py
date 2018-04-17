@@ -9,13 +9,11 @@ import serial, argparse
 from Si570 import Si570
 
 def getDividers( f1 ):
-    HS_DIVS = [4,5,6,7,None,9,None,11]
+    HS_DIVS = [4,5,6,7,9,11]
     NS = [1]
     NS.extend( range(2,130,2) )
     for h in HS_DIVS[::-1]:
         for n in NS:
-            if h is None:
-                continue
             fDco = f1 * h * n
             # print( h, n, fDco/1e9 )
             if fDco>5.67e9:
