@@ -25,10 +25,13 @@ uint16_t xdata OutCount;                  // Holds size of transmitted packet
 uint8_t  xdata RX_Packet[PACKET_SIZE];    // Packet received from host
 uint8_t  xdata TX_Packet[PACKET_SIZE];    // Packet to transmit to host
 
-const char code infoStr[] = "\ni = show initial values\n"   \
-                            "\nr = read"                    \
-                            "\nw = write 'w 01 c2 ...'\n"   \
-                            "\nf = show flash values\n";
+const char code infoStr[] = "\n----------------------------------" \
+							"\n Magic Clock Box 3000 	 4/17/18 " \
+							"\n----------------------------------" \
+							"\ni = show Si570 power-up values"     \
+							"\nf = show flash values"			   \
+                            "\nr = read current values"            \
+                            "\nw = write values ('w 01 c2 ...')\n\n";
 
 // si570 reg buffers
 uint8_t g_BuffWrite[6];                    // working buffer
