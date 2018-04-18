@@ -27,7 +27,7 @@ Example: [570aca000118](https://www.silabs.com/TimingUtility/timing-part-number-
 
 # LEDs
 
-At power-up, the two red LEDs [LED3, LED4] on the board indicate:
+At power-up, the two red LEDs [D3, D4] on the board indicate:
 
     [1,0] = Configuration over I2C in progress
     [0,0] = Configuration done, no I2C error
