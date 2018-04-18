@@ -27,11 +27,11 @@ Example: [570aca000118](https://www.silabs.com/TimingUtility/timing-part-number-
 
 # LEDs
 
-At power-up, the LEDs [LED0, LED1] on the board indicate:
+At power-up, the two red LEDs [LED3, LED4] on the board indicate:
 
-    * `[1,0]` = Configuration over I2C in progress
-    * `[0,0]` = Configuration done, no I2C error
-    * `[1,1]` = I2C error
+    [1,0] = Configuration over I2C in progress
+    [0,0] = Configuration done, no I2C error
+    [1,1] = I2C error
 
 We found that the jumper J5 needs to be set for VCC > 1.8 V for reliable I2C communication.
 
