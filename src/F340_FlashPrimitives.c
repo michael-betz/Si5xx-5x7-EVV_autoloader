@@ -56,7 +56,7 @@ void FLASH_PageErase (FLADDR addr);
 //-----------------------------------------------------------------------------
 //
 // Return Value : None
-// Parameters   : 
+// Parameters   :
 //   1)  FLADDR addr - target address to write to
 //                     range is 0 to (FLASH_TEMP-1)
 //   2)  char byte   - byte to write
@@ -101,9 +101,9 @@ void FLASH_ByteWrite (FLADDR addr, char byte)
 // FLASH_ByteRead
 //-----------------------------------------------------------------------------
 //
-// Return Value : 
+// Return Value :
 //   1)  unsigned char  - byte that was read from Flash
-// Parameters   : 
+// Parameters   :
 //   1)  FLADDR addr    - target address to write to
 //                        range is 0 to (FLASH_TEMP-1)
 //
@@ -132,7 +132,7 @@ unsigned char FLASH_ByteRead (FLADDR addr)
 //-----------------------------------------------------------------------------
 //
 // Return Value : None
-// Parameters   : 
+// Parameters   :
 //   1)  FLADDR addr    - target address to write to
 //                        range is 0 to (FLASH_TEMP-1)
 //
