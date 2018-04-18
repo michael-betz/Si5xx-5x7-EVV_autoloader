@@ -1,6 +1,6 @@
 # Si5xx Autoloader
 Alternative firmware for the `Si5xx-PROG_EVB` evaluation board, which turns it into a virtual USB serial port.
-Register settings can be set manually with `miniterm.py` or a target frequency can be programmed with the provided `setFreq.py`.
+Register settings can be set manually with a serial terminal (like `miniterm.py`) or a target frequency can be programmed with the provided `setFreq.py`.
 Settings are stored in non-volatile memory and applied to the Si5xx on power-up.
 
 # Flashing the firmware
@@ -23,7 +23,17 @@ Write to device and flash ...
 Note that 156.25 MHz is the `start-up frequency`, which can be looked up from the part-number on the
 [Silabs website](https://www.silabs.com/products/timing/lookup-customize).
 
-For the example part [these are the results](https://www.silabs.com/TimingUtility/timing-part-number-search-results.aspx?term=570aca000118).
+Example: [570aca000118](https://www.silabs.com/TimingUtility/timing-part-number-search-results.aspx?term=570aca000118).
+
+# LEDs
+
+At power-up, the LEDs [LED0, LED1] on the board indicate:
+
+    * `[1,0]` = Configuration over I2C in progress
+    * `[0,0]` = Configuration done, no I2C error
+    * `[1,1]` = I2C error
+
+We found that the jumper J5 needs to be set for VCC > 1.8 V for reliable I2C communication.
 
 # Development
 ... was done with Simplicity Studio 4 on a windows PC. The eclipse project is included in this git.
