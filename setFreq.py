@@ -9,7 +9,8 @@ import serial, argparse
 from Si570 import Si570
 
 def getDividers( f1 ):
-    HS_DIVS = [4,5,6,7,9,11]
+    """ returns a valid combination of clock dividers for target freq. `f1` """
+    HS_DIVS = (4,5,6,7,9,11)
     NS = [1]
     NS.extend( range(2,130,2) )
     for h in HS_DIVS[::-1]:
@@ -47,17 +48,23 @@ def main():
     print("Read initial register settings ... ")
     with serial.Serial( args.port, timeout=3 ) as ser:
         ser.write(b'i')
-        l = ser.readline().decode()     # 'i 01 C2 BC 81 83 02 \n'
+        l = ser.readline().decode()
+    # l = 'i 01 C2 BC 81 83 02 \n'
     if not l.startswith('i '):
         raise RuntimeError("Unexpected response: " + l)
 
     # parse current settings
     sil = Si570( l );
-    print("{:>24} --> {!s:<45}".format(l.strip(), sil) )
+    fxtal = sil.fxtal( args.f0 )
+    print(
+        "{:>24} --> {!s:<40} f_xtal: {:.6f} MHz".format(
+            l.strip(), sil, fxtal/1.0e6
+        )
+    )
 
     # Calculate new settings
     hs_div, n1, fDco = getDividers( args.f1 )
-    rffreq = fDco / sil.fxtal( args.f0 )
+    rffreq = fDco / fxtal
 
     # Un-parse new settings
     silNew = Si570();
@@ -66,7 +73,7 @@ def main():
     silNew.RFFREQ = rffreq
 
     print("Calculate new settings ...")
-    print("{new!r:>24} --> {new!s:<45}".format(new=silNew) )
+    print("{a!r:>24} --> {a!s:<45}".format(a=silNew) )
 
     print("Write to device and flash ... ")
     with serial.Serial( args.port, timeout=3 ) as ser:
