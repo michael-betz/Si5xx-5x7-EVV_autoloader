@@ -85,7 +85,9 @@ def main():
             )
         )
         ser.write( b"r" )
-        print( "{:>24}".format( ser.readline().decode().strip() ) )
+        readBack = ser.readline().decode().strip()
+        readBackOk = readBack[1:] == repr(silNew)[1:]
+        print( "{:>24} --> {:}".format( readBack,  "verified" if readBackOk else "verify failed" ) )
 
 if __name__ == '__main__':
     main();
