@@ -1,6 +1,6 @@
 # Si5xx Autoloader
 Alternative firmware for the `Si5xx-PROG_EVB` evaluation board, which turns it into a virtual USB serial port.
-Register settings can be set manually with `miniterm.py` or a target frequency can be programmed with the provided `setFreq.py`.
+Register settings can be set manually with a serial terminal (like `miniterm.py`) or a target frequency can be programmed with the provided `setFreq.py`.
 Settings are stored in non-volatile memory and applied to the Si5xx on power-up.
 
 # Flashing the firmware
@@ -13,18 +13,28 @@ Example of setting the output frequency to 500.1 MHz.
 ```bash
 $ python setFreq.py -p /dev/ttyUSB1 156.25e6 500.1e6
 Read initial register settings ...
-     i 01 C2 BC 81 83 02 --> HS_DIV: 4, N1: 8, RFFREQ: 43.781619079
+     i 01 C2 BB FB FC AB --> HS_DIV: 4, N1: 8, RFFREQ: 43.749020260   f_xtal: 114.288274 MHz
 Calculate new settings ...
-     w E0 03 02 B5 EA 58 --> HS_DIV:11, N1: 1, RFFREQ: 48.169412941
+     w E0 03 02 23 02 40 --> HS_DIV:11, N1: 1, RFFREQ: 48.133547068
 Write to device and flash ...
-     w E0 03 02 B5 EA 58 --> config_done
-     r E0 03 02 B5 EA 58
+     w E0 03 02 23 02 40 --> config_done
+     r E0 03 02 23 02 40 --> verified
 ```
 
 Note that 156.25 MHz is the `start-up frequency`, which can be looked up from the part-number on the
 [Silabs website](https://www.silabs.com/products/timing/lookup-customize).
 
-For the example part [these are the results](https://www.silabs.com/TimingUtility/timing-part-number-search-results.aspx?term=570aca000118).
+Example: [570aca000118](https://www.silabs.com/TimingUtility/timing-part-number-search-results.aspx?term=570aca000118).
+
+# LEDs
+
+At power-up, the two red LEDs [D3, D4] on the board indicate:
+
+    [1,0] = Configuration over I2C in progress
+    [0,0] = Configuration done, no I2C error
+    [1,1] = I2C error
+
+We found that the jumper J5 needs to be set for VCC > 1.8 V for reliable I2C communication.
 
 # Development
 ... was done with Simplicity Studio 4 on a windows PC. The eclipse project is included in this git.

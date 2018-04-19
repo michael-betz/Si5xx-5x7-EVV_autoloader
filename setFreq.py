@@ -5,7 +5,7 @@ and visible as a virtual USB serial port.
 
 Si570 datasheet:  https://www.silabs.com/documents/public/data-sheets/si570.pdf
 """
-import serial, argparse
+import sys, serial, argparse
 from Si570 import Si570
 
 def getDividers( f1 ):
@@ -85,7 +85,11 @@ def main():
             )
         )
         ser.write( b"r" )
-        print( "{:>24}".format( ser.readline().decode().strip() ) )
+        readBack = ser.readline().decode().strip()
+        readBackOk = readBack[1:] == repr(silNew)[1:]
+        print( "{:>24} --> {:}".format( readBack,  "verified" if readBackOk else "verify failed" ) )
+        if not readBackOk:
+            sys.exit(1)
 
 if __name__ == '__main__':
     main();
