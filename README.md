@@ -4,7 +4,8 @@ Register settings can be set manually with `miniterm.py` or a target frequency c
 Settings are stored in non-volatile memory and applied to the Si5xx on power-up.
 
 # Flashing the firmware
-either use the [production programmer](https://www.silabs.com/documents/login/software/MCUProductionProgrammer.zip), Silicon Labs IDE or Simplicity Studio. All 3 are free but need registration on the Silicon labs website. Alternatively, bring the board to `46-146c` ;)
+You'll need a [programming adapter](https://www.silabs.com/products/development-tools/mcu/8-bit/8bit-mcu-accessories/8-bit-debug-adapter).
+Then either use the [production programmer](https://www.silabs.com/documents/login/software/MCUProductionProgrammer.zip), Silicon Labs IDE or Simplicity Studio. All 3 are free but need registration on the Silicon labs website.
 
 # Setting a new frequency
 Example of setting the output frequency to 500.1 MHz.
