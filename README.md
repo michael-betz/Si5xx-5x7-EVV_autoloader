@@ -36,6 +36,10 @@ At power-up, the two red LEDs [D3, D4] on the board indicate:
 
 We found that the jumper J5 needs to be set for VCC > 1.8 V for reliable I2C communication.
 
+__Caveat emptor__
+
+Using the `J1` screw terminal on the board will not power the MCU and hence not auto-configure the Si5xx chip. Make sure `VBUS_5V` (`TP2`) actually is at 5 V. Best to power the board through USB.
+
 # Development
 ... was done with Simplicity Studio 4 on a windows PC. The eclipse project is included in this git.
 
