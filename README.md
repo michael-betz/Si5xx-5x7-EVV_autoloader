@@ -34,7 +34,16 @@ At power-up, the two red LEDs [D3, D4] on the board indicate:
     [0,0] = Configuration done, no I2C error
     [1,1] = I2C error
 
-We found that the jumper J5 needs to be set for VCC > 1.8 V for reliable I2C communication.
+If you see any red led staying lit, something went wrong.
+
+
+# Jumpers
+
+  * J5 [1, 2] VCC > 1.8 V for reliable I2C communication
+  * J20 [3, 4] [5, 6] to connect I2C
+  * J13 don't care (connects Si570 Pin 1 to SDA / TP10)
+  * J11 [2, 3] to power Si570 from on board v-reg
+
 
 __Caveat emptor__
 
