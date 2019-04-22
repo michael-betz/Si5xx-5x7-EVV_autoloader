@@ -54,6 +54,7 @@ Using the `J1` screw terminal on the board will not power the MCU and hence not 
 
 # Resources
 
+ * [Phase noise measurement](https://yetifrisstlama.github.io/si570-phase-noise/) 
  * [Si5xx-PROG_EVB evaluation board](https://www.silabs.com/documents/public/user-guides/Si5xx-PROG-EVB.pdf)
  * [Si570 Programmable XO](https://www.silabs.com/documents/public/data-sheets/si570.pdf)
  * [C8051F342 8-bit Microcontroller](https://www.silabs.com/documents/public/data-sheets/C8051F34x.pdf)
